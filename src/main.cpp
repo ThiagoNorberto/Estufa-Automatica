@@ -300,7 +300,6 @@ void tomarDecisao() {
   // --- LÓGICA DO COOLER ---
   bool precisaLigarCooler = (temperaturaAr > TEMPERATURA_MAXIMA_LIGAR) ||
                             (umidadeAr > UMIDADE_AR_MAXIMA_LIGAR) ||
-                            (co2PPM < CO2_NIVEL_MINIMO_LIGAR) ||
                             (co2PPM > CO2_NIVEL_MAXIMO_LIGAR);
 
   bool podeDesligarCooler = (temperaturaAr < TEMPERATURA_SEGURA_DESLIGAR) &&
