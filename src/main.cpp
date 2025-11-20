@@ -68,12 +68,11 @@ const int UMIDADE_MAXIMA_IRRIGACAO = 50;
 // --- Parâmetros de Ventilação ---
 const float TEMPERATURA_MAXIMA_LIGAR = 28.0;
 const float TEMPERATURA_SEGURA_DESLIGAR = 26.0;
-const float UMIDADE_AR_MAXIMA_LIGAR = 65.0;
-const float UMIDADE_AR_SEGURA_DESLIGAR = 55.0;
+const float UMIDADE_AR_MAXIMA_LIGAR = 75.0;
+const float UMIDADE_AR_SEGURA_DESLIGAR = 60.0;
 const float CO2_NIVEL_MAXIMO_LIGAR = 1250.0;
-const float CO2_IDEAL_SUPERIOR = 1200.0;
-const float CO2_IDEAL_INFERIOR = 800.0;
-const float CO2_NIVEL_MINIMO_LIGAR = 750.0;
+const float CO2_NIVEL_SEGURO_DESLIGAR = 800.0;
+
 
 // --- Parâmetros de Temporização ---
 const unsigned long INTERVALO_LEITURAS_MS = 2000;
@@ -304,7 +303,7 @@ void tomarDecisao() {
 
   bool podeDesligarCooler = (temperaturaAr < TEMPERATURA_SEGURA_DESLIGAR) &&
                             (umidadeAr < UMIDADE_AR_SEGURA_DESLIGAR) &&
-                            (co2PPM > CO2_IDEAL_INFERIOR && co2PPM < CO2_IDEAL_SUPERIOR);
+                            (co2PPM > CO2_NIVEL_SEGURO_DESLIGAR);
 
   if (precisaLigarCooler && !coolerLigado) {
     digitalWrite(PINO_RELE_COOLER, HIGH);
